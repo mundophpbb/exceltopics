@@ -1,0 +1,82 @@
+{% INCLUDE 'overall_header.html' %}
+
+<h1>{{ lang('ACP_EXCELTOPICS_SUPPORT') }}</h1>
+<p>{{ lang('ACP_EXCELTOPICS_SUPPORT_EXPLAIN') }}</p>
+
+{% if S_SUCCESS %}
+<div class="successbox">
+    <h3>{{ lang('SUCCESS') }}</h3>
+    <p>{{ SUCCESS_MSG }}</p>
+</div>
+{% endif %}
+
+{% if S_ERROR %}
+<div class="errorbox">
+    <h3>{{ lang('ERROR') }}</h3>
+    <p>{{ ERROR_MSG }}</p>
+</div>
+{% endif %}
+
+{% if S_READY %}
+<div class="successbox">
+    <h3>{{ lang('ACP_EXCELTOPICS_READY') }}</h3>
+</div>
+{% else %}
+<div class="errorbox notice">
+    <h3>{{ lang('ACP_EXCELTOPICS_NOT_READY') }}</h3>
+    {% if not S_ATTACHMENTS_ENABLED %}<p>{{ lang('ACP_EXCELTOPICS_GLOBAL_DISABLED') }}</p>{% endif %}
+</div>
+{% endif %}
+
+<fieldset>
+    <legend>{{ lang('ACP_EXCELTOPICS_SUPPORT') }}</legend>
+    <dl>
+        <dt><label>{{ lang('ACP_EXCELTOPICS_STATUS_ATTACHMENTS') }}</label></dt>
+        <dd><strong>{% if S_ATTACHMENTS_ENABLED %}{{ lang('ACP_EXCELTOPICS_YES') }}{% else %}{{ lang('ACP_EXCELTOPICS_NO') }}{% endif %}</strong></dd>
+    </dl>
+    <dl>
+        <dt><label>{{ lang('ACP_EXCELTOPICS_STATUS_EXTENSION') }}</label></dt>
+        <dd><strong>{% if S_EXTENSION_EXISTS %}{{ lang('ACP_EXCELTOPICS_YES') }}{% else %}{{ lang('ACP_EXCELTOPICS_NO') }}{% endif %}</strong></dd>
+    </dl>
+    <dl>
+        <dt><label>{{ lang('ACP_EXCELTOPICS_STATUS_GROUP') }}</label></dt>
+        <dd><strong>{% if S_GROUP_ENABLED %}{{ lang('ACP_EXCELTOPICS_YES') }}{% else %}{{ lang('ACP_EXCELTOPICS_NO') }}{% endif %}</strong></dd>
+    </dl>
+    <dl>
+        <dt><label>{{ lang('ACP_EXCELTOPICS_STATUS_GROUP_NAME') }}</label></dt>
+        <dd>{% if S_GROUP_ASSIGNED %}{{ GROUP_NAME }}{% else %}{{ lang('ACP_EXCELTOPICS_NOT_ASSIGNED') }}{% endif %}</dd>
+    </dl>
+    <dl>
+        <dt><label>{{ lang('ACP_EXCELTOPICS_STATUS_GROUP_LIMIT') }}</label></dt>
+        <dd>{{ GROUP_LIMIT }}</dd>
+    </dl>
+    <dl>
+        <dt><label>{{ lang('ACP_EXCELTOPICS_STATUS_GLOBAL_LIMIT') }}</label></dt>
+        <dd>{{ GLOBAL_LIMIT }}</dd>
+    </dl>
+</fieldset>
+
+{% if not S_XLSX_ENABLED %}
+<form id="acp_exceltopics_support" method="post" action="{{ U_ACTION }}">
+    <fieldset class="submit-buttons">
+        <p>{{ lang('ACP_EXCELTOPICS_ACTIVATE_EXPLAIN') }}</p>
+        <input class="button1" type="submit" name="activate_xlsx" value="{{ lang('ACP_EXCELTOPICS_ACTIVATE') }}" />
+        {{ S_FORM_TOKEN }}
+    </fieldset>
+</form>
+{% endif %}
+
+<div class="rules">
+    <div class="inner">
+        <strong>{{ lang('INFORMATION') }}</strong><br />
+        {{ lang('ACP_EXCELTOPICS_PERMISSIONS_NOTE') }}
+    </div>
+</div>
+
+<p class="quick">
+    <a class="button2" href="{{ U_ATTACH_SETTINGS }}">{{ lang('ACP_EXCELTOPICS_OPEN_ATTACHMENTS') }}</a>
+    <a class="button2" href="{{ U_MANAGE_EXTENSIONS }}">{{ lang('ACP_EXCELTOPICS_OPEN_EXTENSIONS') }}</a>
+    <a class="button2" href="{{ U_EXTENSION_GROUPS }}">{{ lang('ACP_EXCELTOPICS_OPEN_GROUPS') }}</a>
+</p>
+
+{% INCLUDE 'overall_footer.html' %}

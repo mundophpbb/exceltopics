@@ -1,0 +1,190 @@
+.excel-topic-tables {
+    clear: both;
+    margin: 1.25em 0 0;
+}
+
+.excel-topic-table-card {
+    margin: 1em 0;
+    border: 1px solid rgba(127, 127, 127, 0.35);
+    border-radius: 6px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.excel-topic-table-title {
+    padding: 0.7em 0.9em 0.3em;
+    background: rgba(127, 127, 127, 0.09);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.excel-topic-table-meta {
+    padding: 0 0.9em 0.7em;
+    border-bottom: 1px solid rgba(127, 127, 127, 0.28);
+    background: rgba(127, 127, 127, 0.09);
+    font-size: 0.92em;
+    opacity: 0.82;
+}
+
+.excel-topic-table-meta span {
+    display: inline-block;
+}
+
+.excel-topic-sheet-context {
+    padding: 0.75em 0.9em;
+    border-bottom: 1px solid rgba(127, 127, 127, 0.22);
+    background: rgba(127, 127, 127, 0.025);
+}
+
+.excel-topic-sheet-context-title {
+    font-size: 1.08em;
+    font-weight: 700;
+}
+
+.excel-topic-sheet-context-subtitle {
+    margin-top: 0.15em;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.excel-topic-sheet-context-pair {
+    display: grid;
+    grid-template-columns: minmax(10rem, 0.45fr) minmax(12rem, 1fr);
+    gap: 0.5em 1em;
+    margin-top: 0.45em;
+}
+
+.excel-topic-sheet-context-label {
+    font-weight: 600;
+}
+
+.excel-topic-sheet-context-value {
+    overflow-wrap: anywhere;
+}
+
+.excel-topic-table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: inset -12px 0 12px -14px currentColor;
+}
+
+.excel-topic-table-scroll:focus {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+}
+
+.excel-topic-table {
+    width: max-content;
+    min-width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: transparent;
+}
+
+.excel-topic-table th,
+.excel-topic-table td {
+    min-width: 7rem;
+    max-width: 30rem;
+    padding: 0.55em 0.7em;
+    border-right: 1px solid rgba(127, 127, 127, 0.25);
+    border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+    text-align: left;
+    vertical-align: top;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.excel-topic-table tr > :last-child {
+    border-right: 0;
+}
+
+.excel-topic-table tbody tr:last-child > * {
+    border-bottom: 0;
+}
+
+.excel-topic-table th {
+    background: rgba(127, 127, 127, 0.13);
+    font-weight: 700;
+}
+
+.excel-topic-table tbody tr:nth-child(even) > td {
+    background: rgba(127, 127, 127, 0.045);
+}
+
+.excel-topic-table tbody tr:hover > td {
+    background: rgba(127, 127, 127, 0.09);
+}
+
+.excel-topic-table-notice {
+    margin: 0;
+    padding: 0.75em 0.9em;
+}
+
+.excel-topic-table-error {
+    border-style: dashed;
+}
+
+.excel-topic-visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+@media (max-width: 700px) {
+    .excel-topic-sheet-context-pair {
+        display: block;
+    }
+
+    .excel-topic-sheet-context-value {
+        display: block;
+        margin-top: 0.1em;
+    }
+
+    .excel-topic-table th,
+    .excel-topic-table td {
+        min-width: 6.5rem;
+        padding: 0.5em 0.6em;
+    }
+
+    .excel-topic-table-scroll::before {
+        content: attr(data-scroll-hint);
+        display: block;
+        padding: 0.45em 0.9em;
+        border-bottom: 1px solid rgba(127, 127, 127, 0.2);
+        font-size: 0.88em;
+        opacity: 0.75;
+    }
+}
+
+@media print {
+    .excel-topic-table-card {
+        border: 1px solid #999;
+        break-inside: avoid;
+    }
+
+    .excel-topic-table-scroll {
+        overflow: visible;
+        box-shadow: none;
+    }
+
+    .excel-topic-table {
+        width: 100%;
+        min-width: 0;
+        font-size: 10pt;
+    }
+
+    .excel-topic-table th,
+    .excel-topic-table td {
+        min-width: 0;
+        max-width: none;
+        padding: 0.35em 0.45em;
+    }
+}

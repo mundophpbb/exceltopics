@@ -1,0 +1,39 @@
+{
+    "name": "mundophpbb/exceltopics",
+    "type": "phpbb-extension",
+    "description": "Renders the newest XLSX attachment in a topic first post as a responsive HTML table with managed storage and safe attachment lifecycle.",
+    "version": "0.2.0-rc4",
+    "time": "2026-07-11",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Mundo phpBB"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "composer/installers": "^1.0 || ^2.0",
+        "ext-libxml": "*",
+        "ext-simplexml": "*",
+        "ext-xmlreader": "*",
+        "ext-zip": "*"
+    },
+    "extra": {
+        "display-name": "Excel Topics",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.3.17,<4.0.0@dev"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "keywords": [
+        "phpbb",
+        "extension",
+        "xlsx",
+        "excel",
+        "table"
+    ]
+}

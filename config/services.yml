@@ -1,0 +1,39 @@
+services:
+    mundophpbb.exceltopics.xlsx_reader:
+        class: mundophpbb\exceltopics\service\xlsx_reader
+
+    mundophpbb.exceltopics.excel_file_storage:
+        class: mundophpbb\exceltopics\service\excel_file_storage
+        arguments:
+            - '@config'
+            - '@dbal.conn'
+            - '@log'
+            - '@user'
+            - '%core.root_path%'
+
+    mundophpbb.exceltopics.table_renderer:
+        class: mundophpbb\exceltopics\service\table_renderer
+        arguments:
+            - '@cache.driver'
+            - '@language'
+            - '@mundophpbb.exceltopics.xlsx_reader'
+            - '@log'
+            - '@user'
+
+
+    mundophpbb.exceltopics.xlsx_support_manager:
+        class: mundophpbb\exceltopics\service\xlsx_support_manager
+        arguments:
+            - '@config'
+            - '@dbal.conn'
+            - '@cache.driver'
+            - '@log'
+            - '@user'
+
+    mundophpbb.exceltopics.listener:
+        class: mundophpbb\exceltopics\event\main_listener
+        arguments:
+            - '@mundophpbb.exceltopics.table_renderer'
+            - '@mundophpbb.exceltopics.excel_file_storage'
+        tags:
+            - { name: event.listener }
